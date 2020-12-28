@@ -3,9 +3,10 @@
 " \ \ / / | || |\/| | |_) | |
 "  \ V /  | || |  | |  _ <| |___
 "   \_/  |___|_|  |_|_| \_\\____|
+"
+"   Author: @Xinlong
 
 let mapleader=" "
-
 
 " Basic Setting
 set nocompatible
