@@ -6,10 +6,31 @@
 "
 "   Author: @Xinlong
 
+" ===
+" === Auto load for first time uses
+" ===
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+	silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+" ===
+" === Create a _machine_specific.vim file to adjust machine specific stuff, like python interpreter location
+" ===
+let has_machine_specific_file = 1
+if empty(glob('~/.config/nvim/_machine_specific.vim'))
+	let has_machine_specific_file = 0
+	silent! exec "!cp ~/.config/nvim/default_configs/_machine_specific_default.vim ~/.config/nvim/_machine_specific.vim"
+endif
+source ~/.config/nvim/_machine_specific.vim
+
 let mapleader=" "
 
 " Basic Setting
 set nocompatible
+syntax on
 filetype on
 filetype indent on
 filetype plugin on
@@ -24,11 +45,12 @@ set softtabstop=2
 set list
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=10
-set tw=0
+set tw=80
 set indentexpr=
 set backspace=indent,eol,start
 set foldmethod=syntax
-set foldlevel=99
+set foldclose=all
+set foldlevel=0
 set laststatus=2
 set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -70,8 +92,8 @@ map sl :set splitright<CR>:vsplit<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
 map sk :set nosplitbelow<CR>:split<CR>
 map sj :set splitbelow<CR>:split<CR>
-map sv <C-w>t<C-w>H
-map sh <C-w>t<C-w>K
+"map sv <C-w>t<C-w>H
+"map sh <C-w>t<C-w>K
 
 map <LEADER>l <C-w>l
 map <LEADER>j <C-w>j
@@ -157,8 +179,8 @@ Plug 'fadein/vim-FIGlet'
 " Nerd Commenter
 Plug 'preservim/nerdcommenter'
 
-" CPP Formator
-Plug 'rhysd/vim-clang-format'
+"" CPP Formator
+"Plug 'rhysd/vim-clang-format'
 
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -175,7 +197,22 @@ Plug 'gcmt/wildfire.vim'
 " Sround
 Plug 'tpope/vim-surround'
 
+" NerdTree
+Plug 'preservim/nerdtree'
+
+" Theme
+"Plug 'danilo-augusto/vim-afterglow'
+Plug 'AlessandroYorba/Alduin'
+
 call plug#end()
+
+" ===
+" === Theme
+" ===
+colorscheme alduin
+"let g:deepspace_italics=1
+"let g:airline_theme='deep_space'
+
 
 " ===
 " === coc.vim
@@ -244,6 +281,7 @@ let g:coc_global_extensions = [
   \ 'coc-sh',
   \ 'coc-sql',
   \ 'coc-clangd']
+  
 
 
 " ===
@@ -251,16 +289,23 @@ let g:coc_global_extensions = [
 " ===
 nmap <CR> <Plug>(wildfire-quick-select)
 
+" ===
+" === NerdTree
+" ===
+nnoremap tt :NERDTree<CR>
+autocmd VimEnter * NERDTree | wincmd p
 
-" ===
-" === CPP Formator
-" ===
-let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11"}
-autocmd FileType c,cpp,h ClangFormatAutoEnable
+
+
+"" ===
+"" === CPP Formator
+"" ===
+"let g:clang_format#style_options = {
+"            \ "AccessModifierOffset" : -4,
+"            \ "AllowShortIfStatementsOnASingleLine" : "true",
+"            \ "AlwaysBreakTemplateDeclarations" : "true",
+"            \ "Standard" : "C++11"}
+"autocmd FileType c,cpp,h ClangFormatAutoEnable
 
 " ===
 " === lazygit.vim
@@ -359,3 +404,7 @@ autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,l --------<Enter>
 
+" ===
+" === Cpp shortcut
+" ===
+autocmd Filetype cpp inoremap todo // TODO : <Esc>F:a
