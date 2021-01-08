@@ -209,10 +209,8 @@ call plug#end()
 " ===
 " === Theme
 " ===
+let g:alduin_Shout_Become_Ethereal = 1
 colorscheme alduin
-"let g:deepspace_italics=1
-"let g:airline_theme='deep_space'
-
 
 " ===
 " === coc.vim
