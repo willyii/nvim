@@ -156,9 +156,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
 Plug 'vimwiki/vimwiki'
 
-" Ranger
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
 
 " Bookmarks
 Plug 'kshenoy/vim-signature'
@@ -327,12 +324,6 @@ let g:NERDTreeIndicatorMapCustom = {
   \ "Clean"     : "✔︎",
   \ "Unknown"   : "?"
     \ }
-
-
-" ===
-" === Ranger
-" ===
-map ra :Ranger<CR>
 
 " ===
 " === ale
