@@ -50,7 +50,7 @@ set indentexpr=
 set backspace=indent,eol,start
 set foldmethod=syntax
 set foldclose=all
-set foldlevel=0
+set foldlevel=99
 set laststatus=2
 set autochdir
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
