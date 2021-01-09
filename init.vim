@@ -199,15 +199,18 @@ Plug 'preservim/nerdtree'
 
 " Theme
 "Plug 'danilo-augusto/vim-afterglow'
-Plug 'AlessandroYorba/Alduin'
+"Plug 'AlessandroYorba/Alduin'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
 " ===
 " === Theme
 " ===
-let g:alduin_Shout_Become_Ethereal = 1
-colorscheme alduin
+"let g:alduin_Shout_Become_Ethereal = 1
+"colorscheme alduin
+colorscheme dracula
+"colorscheme_bg dark
 
 " ===
 " === coc.vim
