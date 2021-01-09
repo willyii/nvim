@@ -26,9 +26,9 @@ if empty(glob('~/.config/nvim/_machine_specific.vim'))
 endif
 source ~/.config/nvim/_machine_specific.vim
 
-let mapleader=" "
 
 " Basic Setting
+let mapleader=" "
 set nocompatible
 syntax on
 filetype on
@@ -206,10 +206,8 @@ call plug#end()
 " ===
 " === Theme
 " ===
+let g:alduin_Shout_Become_Ethereal = 1
 colorscheme alduin
-"let g:deepspace_italics=1
-"let g:airline_theme='deep_space'
-
 
 " ===
 " === coc.vim
@@ -336,7 +334,7 @@ let b:ale_fixers = ['autopep8', 'yapf']
 " ===
 " === MarkdownPreview
 " ===
-let g:mkdp_browser = 'google-chrome'
+"let g:mkdp_browser = 'google-chrome'
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 
