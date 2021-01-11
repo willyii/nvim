@@ -290,8 +290,9 @@ nmap <CR> <Plug>(wildfire-quick-select)
 " ===
 " === NerdTree
 " ===
-nnoremap tt :NERDTree<CR>
-autocmd VimEnter * NERDTree | wincmd p
+nnoremap tt :NERDTreeToggle<CR>
+nnoremap tr :NERDTreeRefreshRoot<CR>
+"autocmd VimEnter * NERDTree | wincmd p
 
 
 
