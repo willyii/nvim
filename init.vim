@@ -202,7 +202,16 @@ Plug 'preservim/nerdtree'
 "Plug 'AlessandroYorba/Alduin'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+" Commente Generator
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
 call plug#end()
+
+" ===
+" === Doge, document generator
+" ===
+map <LEADER>g :DogeGenerate<CR>
+let g:doge_mapping_comment_jump_forward = '`'
 
 " ===
 " === Theme
@@ -292,8 +301,6 @@ nmap <CR> <Plug>(wildfire-quick-select)
 " ===
 nnoremap tt :NERDTreeToggle<CR>
 nnoremap tr :NERDTreeRefreshRoot<CR>
-"autocmd VimEnter * NERDTree | wincmd p
-
 
 
 "" ===
