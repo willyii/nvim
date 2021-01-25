@@ -116,6 +116,9 @@ map tl :+tabnext<CR>
 
 map sc :set spell!<CR>
 
+" Searching  todo
+map td :/TODO<CR> nzz :nohlsearch<CR>
+
 " Complete parenthnes
 "inoremap { {}<ESC>ha
 "inoremap " ""<ESC>ha
@@ -205,7 +208,13 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 " Commente Generator
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
+" Float Terminal
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
+
+nnoremap T :FloatermToggle<CR>
+
 
 " ===
 " === Doge, document generator
@@ -407,4 +416,5 @@ autocmd Filetype markdown inoremap ,l --------<Enter>
 " ===
 " === Cpp shortcut
 " ===
-autocmd Filetype cpp inoremap todo // TODO : <Esc>F:a
+autocmd Filetype cpp inoremap todo /* TODO : */ <Esc>F:a
+
