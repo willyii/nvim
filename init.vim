@@ -211,6 +211,9 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Float Terminal
 Plug 'voldikss/vim-floaterm'
 
+" Airline
+Plug 'vim-airline/vim-airline'
+
 call plug#end()
 
 nnoremap T :FloatermToggle<CR>
