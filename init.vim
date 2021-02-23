@@ -119,11 +119,6 @@ map sc :set spell!<CR>
 " Searching  todo
 map td :/TODO<CR> nzz :nohlsearch<CR>
 
-" Complete parenthnes
-"inoremap { {}<ESC>ha
-"inoremap " ""<ESC>ha
-"inoremap ( ()<ESC>ha
-"inoremap [ []<ESC>ha
 
 " Plugs
 call plug#begin('~/.config/nvim/plugged')
@@ -213,6 +208,9 @@ Plug 'voldikss/vim-floaterm'
 
 " Airline
 Plug 'vim-airline/vim-airline'
+
+" Latex
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -415,6 +413,15 @@ autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,l --------<Enter>
+
+" ===
+" === Latex shortcut
+" ===
+autocmd Filetype tex inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
+autocmd FileType tex inoremap \bg \begin{}<Esc>i
+
+
+
 
 " ===
 " === Cpp shortcut
