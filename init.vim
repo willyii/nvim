@@ -212,6 +212,9 @@ Plug 'vim-airline/vim-airline'
 " Latex
 Plug 'lervag/vimtex'
 
+" Rust
+Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
 nnoremap T :FloatermToggle<CR>
@@ -297,7 +300,8 @@ let g:coc_global_extensions = [
   \ 'coc-python', 
   \ 'coc-sh',
   \ 'coc-sql',
-  \ 'coc-clangd']
+  \ 'coc-clangd',
+  \ 'coc-rust-analyzer']
   
 
 
