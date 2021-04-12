@@ -123,59 +123,14 @@ map td :/TODO<CR> nzz :nohlsearch<CR>
 " Plugs
 call plug#begin('~/.config/nvim/plugged')
 
-" Tag list
-Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
-
-" Error checking
-Plug 'w0rp/ale'
-
-" Undo Tree
-Plug 'mbbill/undotree/'
-
-" Other visual enhancement
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'itchyny/vim-cursorword'
-
-" Git
-Plug 'rhysd/conflict-marker.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
-
 " Lazygit
-"Plug 'kdheepak/:identifierazygit.nvim'
 Plug 'kdheepak/lazygit.vim', { 'branch': 'nvim-v0.4.3' }
 
-
-
 " Markdown
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'vimwiki/vimwiki'
-
-
-" Bookmarks
-Plug 'kshenoy/vim-signature'
-
-" Other useful utilities
-Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/goyo.vim' " distraction free writing mode
-Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
-Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
-Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
-
-" Dependencies
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'kana/vim-textobj-user'
-Plug 'fadein/vim-FIGlet'
 
 " Nerd Commenter
 Plug 'preservim/nerdcommenter'
-
-"" CPP Formator
-"Plug 'rhysd/vim-clang-format'
 
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -183,28 +138,11 @@ if !has('nvim')
   Plug 'rhysd/vim-healthcheck'
 endif
 
-" FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-" Wildfire
-Plug 'gcmt/wildfire.vim'
-
-" Sround
-Plug 'tpope/vim-surround'
-
-" NerdTree
-Plug 'preservim/nerdtree'
-
 " Theme
-"Plug 'danilo-augusto/vim-afterglow'
-"Plug 'AlessandroYorba/Alduin'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
-" Commente Generator
+" Document Generator
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-
-" Float Terminal
-Plug 'voldikss/vim-floaterm'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -212,13 +150,7 @@ Plug 'vim-airline/vim-airline'
 " Latex
 Plug 'lervag/vimtex'
 
-" Rust
-Plug 'rust-lang/rust.vim'
-
 call plug#end()
-
-nnoremap T :FloatermToggle<CR>
-
 
 " ===
 " === Doge, document generator
@@ -229,10 +161,7 @@ let g:doge_mapping_comment_jump_forward = '`'
 " ===
 " === Theme
 " ===
-"let g:alduin_Shout_Become_Ethereal = 1
-"colorscheme alduin
 colorscheme dracula
-"colorscheme_bg dark
 
 " ===
 " === coc.vim
@@ -297,35 +226,15 @@ augroup end
 let g:coc_global_extensions = [
   \ 'coc-json', 
   \ 'coc-vimlsp',
-  \ 'coc-python', 
   \ 'coc-sh',
+  \ 'coc-pyright', 
   \ 'coc-sql',
   \ 'coc-clangd',
-  \ 'coc-rust-analyzer']
-  
+  \ 'coc-rust-analyzer', 
+  \ 'coc-explorer']
 
-
-" ===
-" === Wildfire
-" ===
-nmap <CR> <Plug>(wildfire-quick-select)
-
-" ===
-" === NerdTree
-" ===
-nnoremap tt :NERDTreeToggle<CR>
-nnoremap tr :NERDTreeRefreshRoot<CR>
-
-
-"" ===
-"" === CPP Formator
-"" ===
-"let g:clang_format#style_options = {
-"            \ "AccessModifierOffset" : -4,
-"            \ "AllowShortIfStatementsOnASingleLine" : "true",
-"            \ "AlwaysBreakTemplateDeclarations" : "true",
-"            \ "Standard" : "C++11"}
-"autocmd FileType c,cpp,h ClangFormatAutoEnable
+" Toggle coc-explorer
+:nnoremap tt :CocCommand explorer<CR>
 
 " ===
 " === lazygit.vim
@@ -335,60 +244,17 @@ let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating
 let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
 nnoremap git :LazyGit<CR>
 
-" ==
-" == NERDTree-git
-" ==
-let g:NERDTreeIndicatorMapCustom = {
-  \ "Modified"  : "✹",
-  \ "Staged"    : "✚",
-  \ "Untracked" : "✭",
-  \ "Renamed"   : "➜",
-  \ "Unmerged"  : "═",
-  \ "Deleted"   : "✖",
-  \ "Dirty"     : "✗",
-  \ "Clean"     : "✔︎",
-  \ "Unknown"   : "?"
-    \ }
-
-" ===
-" === ale
-" ===
-let b:ale_linters = ['pylint']
-let b:ale_fixers = ['autopep8', 'yapf']
-
 " ===
 " === MarkdownPreview
 " ===
-"let g:mkdp_browser = 'google-chrome'
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
-
-" ===
-" === vim-table-mode
-" ===
-map <LEADER>tm :TableModeToggle<CR>
 
 " ===
 " === Python-syntax
 " ===
 let g:python_highlight_all = 1
 let g:python_slow_sync = 0
-
-
-" ===
-" === vim-indent-guide
-" ===
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_color_change_percent = 1
-silent! unmap <LEADER>ig
-autocmd WinEnter * silent! unmap <LEADER>ig
-
-" ===
-" === Goyo
-" ===
-map <LEADER>gy :Goyo<CR>
 
 " ===
 " === Nerd Commenter
@@ -401,7 +267,6 @@ map fig :r !figlet
 "===
 "=== Markdown cheatsheep
 "===
-"autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
 autocmd Filetype markdown inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
 autocmd Filetype markdown inoremap ,n ---<Enter><Enter>
 autocmd Filetype markdown inoremap ,b **** <++><Esc>F*hi
@@ -417,15 +282,13 @@ autocmd Filetype markdown inoremap ,2 ##<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,3 ###<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,4 ####<Space><Enter><++><Esc>kA
 autocmd Filetype markdown inoremap ,l --------<Enter>
+autocmd Filetype markdown inoremap ,$ $$<Space><++><Esc>F$i
 
 " ===
 " === Latex shortcut
 " ===
 autocmd Filetype tex inoremap ,f <Esc>/<++><CR>:nohlsearch<CR>c4l
 autocmd FileType tex inoremap \bg \begin{}<Esc>i
-
-
-
 
 " ===
 " === Cpp shortcut
