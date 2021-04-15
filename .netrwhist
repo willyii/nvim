@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/xinlong/Documents/Github/TexasHoldemAI/test/testplayer'
+let g:netrw_dirhist_3='/home/xinlong/Documents/Github/TexasHoldemAI/test'
 let g:netrw_dirhist_2='/home/xinlong/.config/nvim'
 let g:netrw_dirhist_1='/home/xinlong/.mozilla'
