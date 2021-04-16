@@ -231,7 +231,8 @@ let g:coc_global_extensions = [
   \ 'coc-sql',
   \ 'coc-clangd',
   \ 'coc-rust-analyzer', 
-  \ 'coc-explorer']
+  \ 'coc-explorer', 
+  \ 'coc-html']
 
 " Toggle coc-explorer
 :nnoremap tt :CocCommand explorer<CR>

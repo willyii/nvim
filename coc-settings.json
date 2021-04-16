@@ -46,7 +46,8 @@
     "h",
     "py",
     "java",
-    "scala"
+    "scala",
+    "html"
   ],
   "python.linting.pylintArgs": [
     "--errors-only",
