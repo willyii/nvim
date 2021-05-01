@@ -60,7 +60,7 @@ let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 set number
-set relativenumber
+"set relativenumber
 set cursorline
 set wrap
 set showcmd
@@ -123,9 +123,6 @@ map td :/TODO<CR> nzz :nohlsearch<CR>
 " Plugs
 call plug#begin('~/.config/nvim/plugged')
 
-" Lazygit
-Plug 'kdheepak/lazygit.vim', { 'branch': 'nvim-v0.4.3' }
-
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
@@ -150,7 +147,13 @@ Plug 'vim-airline/vim-airline'
 " Latex
 Plug 'lervag/vimtex'
 
+" Vimleetcode
+Plug 'ianding1/leetcode.vim'
+
 call plug#end()
+
+" === Leetcode vim
+let g:leetcode_browser = "chrome"
 
 " ===
 " === Doge, document generator
@@ -237,13 +240,6 @@ let g:coc_global_extensions = [
 " Toggle coc-explorer
 :nnoremap tt :CocCommand explorer<CR>
 
-" ===
-" === lazygit.vim
-" ===
-let g:lazygit_floating_window_winblend = 0 " transparency of floating window
-let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
-let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
-nnoremap git :LazyGit<CR>
 
 " ===
 " === MarkdownPreview
