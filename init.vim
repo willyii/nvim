@@ -92,8 +92,8 @@ map sl :set splitright<CR>:vsplit<CR>
 map sh :set nosplitright<CR>:vsplit<CR>
 map sk :set nosplitbelow<CR>:split<CR>
 map sj :set splitbelow<CR>:split<CR>
-"map sv <C-w>t<C-w>H
-"map sh <C-w>t<C-w>K
+map sv <C-w>t<C-w>H
+map sb <C-w>t<C-w>K
 
 map <LEADER>l <C-w>l
 map <LEADER>j <C-w>j
@@ -227,10 +227,10 @@ augroup mygroup
 augroup end
 
 let g:coc_global_extensions = [
+      \ 'coc-python',
   \ 'coc-json', 
   \ 'coc-vimlsp',
   \ 'coc-sh',
-  \ 'coc-pyright', 
   \ 'coc-sql',
   \ 'coc-clangd',
   \ 'coc-rust-analyzer', 
