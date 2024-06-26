@@ -243,10 +243,10 @@ let g:coc_global_extensions = [
 
 
 " ===
-" === MarkdownPreview
+" === MarkdownPreview AutoStart
 " ===
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
+"let g:mkdp_auto_start = 1
+"let g:mkdp_auto_close = 1
 
 " ===
 " === Python-syntax
